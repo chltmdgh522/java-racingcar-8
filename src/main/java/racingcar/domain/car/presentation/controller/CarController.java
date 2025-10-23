@@ -30,6 +30,6 @@ public class CarController {
         racingCarService.setupRace(cars);
         racingCarService.playRace(attemptCount);
 
-        OutputView.printWinners(racingCarService.getCars());
+        OutputView.printWinners(racingCarService.winnerCars());
     }
 }

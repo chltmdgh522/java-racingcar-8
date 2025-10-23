@@ -9,6 +9,6 @@ public interface RacingCarService {
 
     void playRace(long attemptCount);
 
-    List<Car> getCars();
+    List<Car> winnerCars();
 
 }
