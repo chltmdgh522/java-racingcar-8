@@ -1,4 +1,4 @@
-package racingcar.domain.domain.entity;
+package racingcar.domain.car.domain.entity;
 
 import java.util.UUID;
 
