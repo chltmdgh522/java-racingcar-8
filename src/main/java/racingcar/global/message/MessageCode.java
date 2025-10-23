@@ -1,8 +1,8 @@
 package racingcar.global.message;
 
 public enum MessageCode {
-    INPUT_GUIDE("덧셈할 문자열을 입력해 주세요."),
-    RESULT_FORMAT("결과 : %d"),
+    RACE_STATUS_HEADER("각 턴 결과"),
+    RACE_WINNER_HEADER("최종 우승자 : "),
     ERROR_FORMAT("오류: %s");
 
     private final String message;
