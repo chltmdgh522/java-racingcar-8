@@ -1,7 +1,9 @@
 package racingcar.global.config;
 
-import racingcar.domain.car.application.service.CarService;
-import racingcar.domain.car.application.service.impl.CarServiceImpl;
+import racingcar.domain.car.application.service.CarCrudService;
+import racingcar.domain.car.application.service.RacingCarService;
+import racingcar.domain.car.application.service.impl.CarCrudServiceImpl;
+import racingcar.domain.car.application.service.impl.RacingCarServiceImpl;
 import racingcar.domain.car.domain.repository.CarRepository;
 import racingcar.domain.car.presentation.controller.CarController;
 
@@ -24,30 +26,43 @@ public class ApplicationFactory {
     public static ApplicationRunner createApplicationRunner() {
 
         CarRepository carRepository =createCarRepository();
-        CarService carService = createCarService(carRepository);
-        CarController carController = createCarController(carService);
+        RacingCarService racingCarService = createRacingCarService(carRepository);
+        CarCrudService carCrudService = createCarCrudService(carRepository);
+        CarController carController = createCarController(racingCarService, carCrudService);
         return new ApplicationRunner(carController);
     }
 
     /**
      * 레이싱카 컨트롤러 생성
      *
-     * @param carService 레이싱 서비스 구현체
+     * @param racingCarService 레이싱 서비스 구현체
      * @return 구성된 CarController 객체
      */
-    private static CarController createCarController(CarService carService) {
-        return new CarController(carService);
+    private static CarController createCarController(RacingCarService racingCarService, CarCrudService carCrudService) {
+        return new CarController(racingCarService, carCrudService);
     }
 
     /**
      * 레이싱 서비스 구현체 생성
      *
      * @param carRepository DB 구현체
-     * @return 구성된 CarService 객체
+     * @return 구성된 RacingCarService 객체
      */
-    private static CarService createCarService(CarRepository carRepository) {
-        return new CarServiceImpl(carRepository);
+    private static RacingCarService createRacingCarService(CarRepository carRepository) {
+        return new RacingCarServiceImpl(carRepository);
     }
+
+    /**
+     * 레이싱카 조회 및 저장 서비스 구현체 생성
+     *
+     * @param carRepository DB 구현체
+     * @return 구성된 CarCrudService 객체
+     */
+    private static CarCrudService createCarCrudService(CarRepository carRepository) {
+        return new CarCrudServiceImpl(carRepository);
+    }
+
+
 
     /**
      * 레이싱 서비스 구현체 생성
