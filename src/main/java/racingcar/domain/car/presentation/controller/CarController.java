@@ -1,7 +1,7 @@
 package racingcar.domain.car.presentation.controller;
 
 import java.util.List;
-import racingcar.domain.car.application.service.CarCrudService;
+import racingcar.domain.car.application.service.CarDataService;
 import racingcar.domain.car.application.service.RacingCarService;
 import racingcar.domain.car.domain.entity.Car;
 import racingcar.domain.car.presentation.view.InputView;
@@ -14,25 +14,22 @@ public class CarController {
 
     private final RacingCarService racingCarService;
 
-    private final CarCrudService carCrudService;
-
     /**
      * 생성자를 통한 레이싱 서비스 주입
      *
      * @param racingCarService 레이싱 이동, 멈춤 로직을 담당하는 서비스
      */
-    public CarController(RacingCarService racingCarService, CarCrudService carCrudService) {
+    public CarController(RacingCarService racingCarService) {
         this.racingCarService = racingCarService;
-        this.carCrudService = carCrudService;
     }
 
     public void racingCarRun() {
         List<Car> cars = InputView.inputCars();
         long attemptCount = InputView.inputAttemptCount();
 
-        carCrudService.carSave(cars);
-        racingCarService.startRace(attemptCount);
+        racingCarService.setupRace(cars);
+        racingCarService.playRace(attemptCount);
 
-        OutputView.printWinners(carCrudService.carFindAll());
+        OutputView.printWinners(racingCarService.getCars());
     }
 }

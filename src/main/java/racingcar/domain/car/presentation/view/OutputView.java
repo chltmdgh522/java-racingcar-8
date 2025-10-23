@@ -31,4 +31,15 @@ public class OutputView {
         System.out.print("최종 우승자 : ");
         System.out.println(sb.toString().trim());
     }
+
+    /**
+     * 각 턴 결과 출력
+     */
+    private void printRaceStatus(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.print(car.getName() + " : ");
+            System.out.println("-".repeat(Math.toIntExact(car.getDistance())));
+        }
+        System.out.println();
+    }
 }

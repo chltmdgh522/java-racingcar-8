@@ -1,17 +1,15 @@
 package racingcar.domain.car.application.service.impl;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import racingcar.domain.car.application.service.CarCrudService;
-import racingcar.domain.car.application.service.RacingCarService;
+import racingcar.domain.car.application.service.CarDataService;
 import racingcar.domain.car.domain.entity.Car;
 import racingcar.domain.car.domain.repository.CarRepository;
 
-public class CarCrudServiceImpl implements CarCrudService {
+public class CarDataServiceImpl implements CarDataService {
 
     private final CarRepository carRepository;
 
-    public CarCrudServiceImpl(CarRepository carRepository) {
+    public CarDataServiceImpl(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 

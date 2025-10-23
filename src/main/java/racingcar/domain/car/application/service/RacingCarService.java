@@ -5,9 +5,10 @@ import racingcar.domain.car.domain.entity.Car;
 
 public interface RacingCarService {
 
+    void setupRace(List<Car> car);
 
-    void startRace(long attemptCount);
+    void playRace(long attemptCount);
 
+    List<Car> getCars();
 
-    void validateInput();
 }
