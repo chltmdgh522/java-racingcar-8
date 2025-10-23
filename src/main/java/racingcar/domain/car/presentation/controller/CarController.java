@@ -1,9 +1,6 @@
 package racingcar.domain.car.presentation.controller;
 
-import java.util.List;
-import racingcar.domain.car.application.service.CarDataService;
 import racingcar.domain.car.application.service.RacingCarService;
-import racingcar.domain.car.domain.entity.Car;
 import racingcar.domain.car.presentation.view.InputView;
 import racingcar.domain.car.presentation.view.OutputView;
 
@@ -24,12 +21,8 @@ public class CarController {
     }
 
     public void racingCarRun() {
-        List<Car> cars = InputView.inputCars();
-        long attemptCount = InputView.inputAttemptCount();
-
-        racingCarService.setupRace(cars);
-        racingCarService.playRace(attemptCount);
-
+        racingCarService.setupRace(InputView.inputCars());
+        racingCarService.playRace(InputView.inputAttemptCount());
         OutputView.printWinners(racingCarService.winnerCars());
     }
 }
