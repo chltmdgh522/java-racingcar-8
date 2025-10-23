@@ -25,13 +25,13 @@ public class RacingCarServiceImpl implements RacingCarService {
     public void playRace(long attemptCount) {
         while (attemptCount-- > 0) {
             moveCars();
-            OutputView.printWinners(carDataService.carFindAll());
+            OutputView.printRaceStatus(carDataService.carFindAll());
         }
     }
 
     @Override
     public List<Car> getCars() {
-       return carDataService.carFindAll();
+        return carDataService.carFindAll();
     }
 
 
