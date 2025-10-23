@@ -24,11 +24,10 @@ public class ApplicationFactory {
      * @return 구성된 ApplicationRunner 객체
      */
     public static ApplicationRunner createApplicationRunner() {
-
-        CarRepository carRepository =createCarRepository();
-        RacingCarService racingCarService = createRacingCarService(carRepository);
+        CarRepository carRepository = createCarRepository();
         CarDataService carDataService = createCarCrudService(carRepository);
-        CarController carController = createCarController(racingCarService, carDataService);
+        RacingCarService racingCarService = createRacingCarService(carDataService);
+        CarController carController = createCarController(racingCarService);
         return new ApplicationRunner(carController);
     }
 
@@ -63,13 +62,12 @@ public class ApplicationFactory {
     }
 
 
-
     /**
      * 레이싱 서비스 구현체 생성
      *
      * @return 구성된 CarRepository 객체
      */
-    private static CarRepository createCarRepository(){
+    private static CarRepository createCarRepository() {
         return new CarRepository();
     }
 }
