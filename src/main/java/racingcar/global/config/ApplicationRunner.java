@@ -2,6 +2,7 @@ package racingcar.global.config;
 
 
 import racingcar.domain.car.presentation.controller.CarController;
+import racingcar.domain.car.presentation.view.OutputView;
 import racingcar.global.error.CarException;
 
 /**
@@ -27,8 +28,8 @@ public class ApplicationRunner {
         try {
             carController.racingCarRun();
         } catch (CarException e) {
-//            OutputView.printError(e.getMessage());
-//            throw e;
+            OutputView.printError(e.getMessage());
+            throw e;
         }
     }
 
