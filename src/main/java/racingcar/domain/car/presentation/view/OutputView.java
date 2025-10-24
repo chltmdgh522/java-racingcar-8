@@ -24,16 +24,8 @@ public class OutputView {
      */
     public static void printWinners(List<Car> cars) {
         StringBuilder sb = new StringBuilder();
-        long maxDistance = 0L;
-
         for (Car car : cars) {
-            if (car.getDistance() > maxDistance) {
-                sb = new StringBuilder();
-                maxDistance = car.getDistance();
-                sb.append(car.getName()).append(",");
-            } else if (Objects.equals(car.getDistance(), maxDistance)) {
-                sb.append(car.getName()).append(",");
-            }
+            sb.append(car.getName()).append(",");
         }
 
         if (!sb.isEmpty() && sb.charAt(sb.length() - 1) == ',') {
@@ -43,7 +35,6 @@ public class OutputView {
         System.out.print(MessageCode.RACE_WINNER_HEADER.getMessage());
         System.out.println(sb.toString().trim());
     }
-
 
 
     /**
