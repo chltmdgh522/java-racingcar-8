@@ -26,8 +26,8 @@ class CarRepositoryTest {
         Car car2 = new Car("woni");
 
         // When
-        carRepository.save(car1);
-        carRepository.save(car2);
+        carRepository.save(List.of(car1,car2));
+
 
         // Then
         List<Car> cars = carRepository.findAll();
