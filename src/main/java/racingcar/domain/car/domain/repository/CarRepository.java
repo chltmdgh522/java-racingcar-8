@@ -11,8 +11,10 @@ public class CarRepository {
     public final Map<String, Car> carDB = new LinkedHashMap<>();
 
 
-    public void save(Car car) {
-        carDB.put(car.getId(), car);
+    public void save(List<Car> cars) {
+        for (Car car : cars) {
+            carDB.put(car.getId(), car);
+        }
     }
 
 

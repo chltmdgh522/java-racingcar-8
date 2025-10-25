@@ -1,8 +1,6 @@
 package racingcar.global.config;
 
-import racingcar.domain.car.application.service.CarDataService;
 import racingcar.domain.car.application.service.RacingCarService;
-import racingcar.domain.car.application.service.impl.CarDataServiceImpl;
 import racingcar.domain.car.application.service.impl.RacingCarServiceImpl;
 import racingcar.domain.car.domain.repository.CarRepository;
 import racingcar.domain.car.presentation.controller.CarController;
@@ -25,8 +23,7 @@ public class ApplicationFactory {
      */
     public static ApplicationRunner createApplicationRunner() {
         CarRepository carRepository = createCarRepository();
-        CarDataService carDataService = createCarCrudService(carRepository);
-        RacingCarService racingCarService = createRacingCarService(carDataService);
+        RacingCarService racingCarService = createRacingCarService(carRepository);
         CarController carController = createCarController(racingCarService);
         return new ApplicationRunner(carController);
     }
@@ -44,21 +41,11 @@ public class ApplicationFactory {
     /**
      * 레이싱 서비스 구현체 생성
      *
-     * @param carDataService 자동차 데이터 구현체
+     * @param carRepository 자동차 저장 구현체
      * @return 구성된 RacingCarService 객체
      */
-    private static RacingCarService createRacingCarService(CarDataService carDataService) {
-        return new RacingCarServiceImpl(carDataService);
-    }
-
-    /**
-     * 레이싱카 조회 및 저장 서비스 구현체 생성
-     *
-     * @param carRepository DB 구현체
-     * @return 구성된 CarCrudService 객체
-     */
-    private static CarDataService createCarCrudService(CarRepository carRepository) {
-        return new CarDataServiceImpl(carRepository);
+    private static RacingCarService createRacingCarService(CarRepository carRepository) {
+        return new RacingCarServiceImpl(carRepository);
     }
 
 
