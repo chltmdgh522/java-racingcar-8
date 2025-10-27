@@ -10,9 +10,6 @@ import racingcar.domain.car.presentation.controller.CarController;
  */
 public class ApplicationFactory {
 
-    /**
-     * 인스턴스화 방지
-     */
     private ApplicationFactory() {
     }
 
